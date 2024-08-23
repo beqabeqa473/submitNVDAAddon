@@ -1,0 +1,40 @@
+name: "Submit NVDA addon"
+description: "Github Action for automating of submitting NVDA addons to addon store"
+author: "gozaltech"
+inputs:
+  addon_name:
+    description: "An addon name which should be submitted."
+    required: true
+  addon_version:
+    description: "An addon version which should be submitted."
+    required: true
+  download_url:
+    description: "The URL to download the add-on. It must start with 'https' and end with 'nvda-addon'. This URL should always download the same file of the same add-on version."
+    required: true
+  source_url:
+    description: "The URL to review the source code of the submitted add-on."
+    required: false
+  publisher:
+    description: "The name of the individual, group, or company responsible for the addon."
+    required: false
+  channel:
+    description: "Channel for this add-on release. (Choose from: ['stable', 'beta', 'dev']"
+    required: false
+    default: "stable"
+  license_name:
+    description: "The license that this add-on is released under."
+    required: false
+    default: "GPL v2"
+  license_url:
+    description: "The URL for the license of this add-on"
+    required: false
+    default: "https://www.gnu.org/licenses/gpl-2.0.html"
+  token:
+    description: "Authorized secret GitHub Personal Access Token."
+    required: true
+outputs:
+  issue_number:
+    description: "Created issue number of submitted addon."
+runs:
+  using: "node20"
+  main: "dist/bundle.js"
