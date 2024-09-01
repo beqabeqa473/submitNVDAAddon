@@ -47,9 +47,9 @@ class SubmitNVDAAddonAction {
 
   getValidatedVersion() {
     const version = this.getRequiredInput("addon_version");
-    const versionRegex = /^(?:\d+\.\d+\.\d+)(?:\.\d+)?$/;
+    const versionRegex = /^(?:\d+\.\d+)(?:\.\d+)?$/;
     if (!versionRegex.test(version)) {
-      throw new Error(`The version format "${version}" is invalid. Expected formats are Major.Minor.Patch or Major.Minor.Patch.Build.`);
+      throw new Error(`The version format "${version}" is invalid. Expected formats are Major.Minor.Patch or Major.Minor.`);
     }
     return version;
   }
